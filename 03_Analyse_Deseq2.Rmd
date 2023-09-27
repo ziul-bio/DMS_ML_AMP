@@ -39,29 +39,10 @@ setwd(getwd())
 
 # Loading count matrix
 ```{r}
-#count_matrix <- read.csv(paste(getwd(), "/data/count_matrix_stacked.txt", sep=""), header=FALSE, sep = " ")
-#count_matrix <- read.csv("/stor/work/Wilke/luiz/Protegrin-1_Slay_and_ML/results/counts_matrix_stacked.csv")
 count_matrix <- read.csv(paste(getwd(), "/results/counts_matrix_stacked.csv", sep=""), header=TRUE, sep = ",")
-#count_matrix <- read.csv("/stor/work/Wilke/luiz/Protegrin-1_Slay_and_ML/data/count_matrix.txt", header=FALSE, sep = " ")
 
 # # removing possible duplicated rows
 count_matrix <- count_matrix[!duplicated(count_matrix),]
-# 
-# # Add a unique ID to to able to merge this file with DE results.
-# count_matrix$ID <- row.names(count_matrix)
-# count_matrix <- count_matrix %>% relocate(ID, .before = V1)
-# 
-# count_matrix <- rename(count_matrix, "Sequence"=V1, "S01_0uM_IPTG_1"=V2, "S02_0uM_IPTG_2"=V3, "S03_0uM_IPTG_3"=V4,
-#        "S04_1uM_IPTG_1"=V5, "S05_1uM_IPTG_2"=V6, "S06_1uM_IPTG_3"=V7,
-#        "S07_10uM_IPTG_1"=V8, "S08_10uM_IPTG_2"=V9, "S09_10uM_IPTG_3"=V10,
-#        "S10_100uM_IPTG_1"=V11, "S11_100uM_IPTG_2"=V12, "S12_100uM_IPTG_3"=V13)
-
-
-
-cols <- c("S01_0uM_IPTG_1", "S02_0uM_IPTG_2", "S03_0uM_IPTG_3",
-       "S04_1uM_IPTG_1", "S05_1uM_IPTG_2", "S06_1uM_IPTG_3",
-       "S07_10uM_IPTG_1", "S08_10uM_IPTG_2", "S09_10uM_IPTG_3",
-       "S10_100uM_IPTG_1", "S11_100uM_IPTG_2", "S12_100uM_IPTG_3")
 
 count_matrix
 ```
@@ -75,8 +56,12 @@ count_matrix[is.na(count_matrix)] <- 0
 # making ID the rownames of the matrix
 row.names(count_matrix) <- count_matrix$ID
 
-#Counts <- count_matrix#[c(-1,-2)]
-#Counts <- count_matrix[c(-1)]
+# selectiong columns from count matrix
+cols <- c("S01_0uM_IPTG_1", "S02_0uM_IPTG_2", "S03_0uM_IPTG_3",
+       "S04_1uM_IPTG_1", "S05_1uM_IPTG_2", "S06_1uM_IPTG_3",
+       "S07_10uM_IPTG_1", "S08_10uM_IPTG_2", "S09_10uM_IPTG_3",
+       "S10_100uM_IPTG_1", "S11_100uM_IPTG_2", "S12_100uM_IPTG_3")
+
 Counts <- count_matrix[cols]
 Counts <- as.matrix(Counts)
 ```
@@ -212,7 +197,6 @@ hnd <- as.data.frame(resHnd)
 peps_DE <- dplyr::filter(hnd, log2FoldChange <= (-1) & DE =="True")
 peps_DE
 ```
-we found 4,451 down expressed peptides with logFoldChange <= -1
 
 
 
@@ -222,7 +206,6 @@ topDE <- dplyr::filter(peps_DE, log2FoldChange <= (-4))
 topDE
 ```
 
-We found 785 down-expressed peptides with logFoldChange <= -2
 
 
 ## Creating a dataframe to save the results
@@ -241,7 +224,7 @@ df_DE
 ```
 
 
-Dataframe with all results from deseq2
+# Dataframe with all results from deseq2
 
 
 ```{r}
@@ -520,7 +503,7 @@ ggsave(file="results/volcano_plot_hdn.jpeg", height=5, width=8, dpi=300)
 
 ### Clustering genes with heatmap
 ```{r, fig.height=10, fig.width=9}
-#jpeg("results/pheatmap_z-score_top50DE_v01.jpeg", height=2000, width=1000, quality = 200, res = 120)
+jpeg("results/pheatmap_z-score_top50DE_v01.jpeg", height=2000, width=1000, res = 120)
 
 #color pallet
 cores_heat <- colorRampPalette(brewer.pal(9, "YlOrRd"))(250)
@@ -558,7 +541,7 @@ pheatmap(head(mat, 50), scale="row", cluster_rows=TRUE, show_rownames=TRUE,
 
 ### Results DESeq2
 ```{r}
-write.xlsx(df_full, 'results/res_full_deseq2.xlsx', colNames = TRUE, rowNames = F)
+#write.xlsx(df_full, 'results/res_full_deseq2.xlsx', colNames = TRUE, rowNames = F)
 ```
 
 
