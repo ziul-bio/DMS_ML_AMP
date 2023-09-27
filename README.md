@@ -14,22 +14,33 @@ Some changes were applied in the pipeline to fit the new data.
 Here we describe all the steps required to reproduce the analysis on the paper "Deep mutational scanning and machine learning uncover antimicrobial peptide features driving membrane selectivity", Author Justin R. Randall.  
 
 
-## Workflow
+# Workflow
 
-This work flow is divided in 2 parts. Part1 - Deep mutational scanning and Part2 - machine learning.
+This work flow is divided in 2 parts. Deep mutational scanning and Machine Learning.
+
+## Part 1 - Deep Mutational Scanning
 
 ### Get Counts
 
-One can run the script [getCounts.sh](https://github.com/ziul-bio/Slay-seq_W3110_PG-1/blob/main/01_getCount.sh) to obtain the result we did.  
+One can run the script [getCounts.sh](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/01_getCount.sh) to obtain the result we did.  
 To run this script you will need [seqkit](https://bioinf.shenwei.me/seqkit/) installed in a unix enviromet.  
 
-### Differential Expression Analysis
+**Note: Since tha raw FASTQ files are larger the limit size allowed in github, they are not available yet, this script will not work.**
 
-The differential analysis was done in R with [Deseq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html), described in the notebook [deseq2_analysis.rmd](https://github.com/ziul-bio/Slay-seq_W3110_PG-1/blob/main/02_Analyse_Deseq2.Rmd).  
 
 ### Compute Changes in the Peptides Sequence
 
-We translated the peptide sequences with the [biopython translate function](https://biopython.org/docs/1.75/api/Bio.Seq.html), and compute the differences on the sequence with the reference protegrin-1 protein using a custom python script, described on [translate_and_compute_changes_in_peptides.ipynb](https://github.com/ziul-bio/Slay-seq_W3110_PG-1/blob/main/03_translate_and_compute_changes_in_peptides.ipynb).
+We translated the peptide sequences with the [biopython translate function](https://biopython.org/docs/1.75/api/Bio.Seq.html), and compute the differences on the sequence with the reference protegrin-1 protein using a custom python script, described on [translate_and_compute_changes_in_peptides.ipynb](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/02_translate_peptides_and_stack.ipynb).
+
+### Differential Expression Analysis
+
+The differential analysis was done in R with [Deseq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html), described in the notebook [deseq2_analysis.rmd](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/03_Analyse_Deseq2.Rmd).  
+
+
+## Part 2 - Machine Learning
+
+### working in progress
+
 
 
 All the code are commented so feel free to change the parameters to suit your data and needs.
