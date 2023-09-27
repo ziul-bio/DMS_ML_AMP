@@ -1,10 +1,8 @@
 ---
-title: "W3110_PG-1 Workflow - Part 2, Differential Expression Analysis with DESeq2"
+title: "Deep mutational scanning and machine learning uncover antimicrobial peptide features driving membrane selectivity"
+subtitle: "Part 3, Differential Expression Analysis with DESeq2"
 author: "Luiz Carlos Vieira"
-date: "08/20/2022"
-output:
-  html_document:
-    df_print: paged
+date: "09/25/2023"
 ---
 
 
