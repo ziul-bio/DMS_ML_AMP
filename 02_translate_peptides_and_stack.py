@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3 -u
 # # Deep mutational scanning and machine learning uncover antimicrobial peptide features driving membrane selectivity
 
 # ## Part 2 - Translate the peptide sequences and compute changes in the residues
