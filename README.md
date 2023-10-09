@@ -39,8 +39,13 @@ The differential analysis was done in R with [Deseq2](https://bioconductor.org/p
 
 ## Part 2 - Machine Learning
 
-### working in progress
+### The notebooks 04 throught 06 shown the procedure used to train and test the model.
 
+#### [Hemolysis Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/04_hemolysis_model.ipynb)
+#### [Selectivity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/05_Selectivity_model.ipynb)
+#### [Activity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/06_Activity_model.ipynb)
+
+#### All these 3 models work in concensus to make the final predictions described in notebook [AMP Predictions](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/07_AMP_predictions.ipynb)
 
 
 All the code are commented so feel free to change the parameters to suit your data and needs.
