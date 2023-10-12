@@ -343,12 +343,12 @@ with increasing mean expression levels.
 
 Plot PCA by column variable
 ```{r, fig.height=5, fig.width=8}
-#jpeg(filename ="results/PCA_plot.jpeg", height=600, width=800, pointsize=12, quality = 200, res = 120)
-plotPCA(rld, intgroup = "group", ntop = 500) +
+jpeg(filename ="results/PCA_plot.jpeg", height=600, width=800, pointsize=12, res = 120)
+#plotPCA(rld, intgroup = "group", ntop = 500) +
+plotPCA(rld, intgroup = "group") +
   theme_bw() +
   geom_point(size = 5) +
-  ggtitle(label = "Principal Component Analysis (PCA)", 
-          subtitle = "Top 500 most variable genes")
+  ggtitle(label = "Principal Component Analysis (PCA)")
 
 
 ```
