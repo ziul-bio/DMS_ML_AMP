@@ -82,7 +82,6 @@ coldata
 ```
 
 
-
 # DESeq2 object
 ```{r}
 dds <- DESeqDataSetFromMatrix(countData=Counts, colData=coldata, design= ~group)
@@ -298,6 +297,7 @@ rld_mtx <- assay(rld)
 ```
 
 
+
 ### Histogram of reads counts distribuition.
 ```{r, fig.height=5, fig.width=8}
 hist(rld_mtx, xlab = 'Normalized ReadsCounts', main= 'rlog Transformad Data' )
@@ -343,7 +343,7 @@ with increasing mean expression levels.
 
 Plot PCA by column variable
 ```{r, fig.height=5, fig.width=8}
-jpeg(filename ="results/PCA_plot.jpeg", height=600, width=800, pointsize=12, res = 120)
+#jpeg(filename ="results/PCA_plot.jpeg", height=600, width=800, pointsize=12, res = 120)
 #plotPCA(rld, intgroup = "group", ntop = 500) +
 plotPCA(rld, intgroup = "group") +
   theme_bw() +
@@ -352,6 +352,34 @@ plotPCA(rld, intgroup = "group") +
 
 
 ```
+
+
+```{r}
+pca_data = rld_mtx[,c(1, 2, 3, 10, 11, 12)]
+
+# Transpose the data
+transposed_data <- t(pca_data)
+
+# Run PCA
+pca_result <- prcomp(transposed_data, center= TRUE, scale.= FALSE)
+
+# 3. Plot the results
+df <- as.data.frame(pca_result$x)
+
+# For demonstration, I'm creating a sample 'group' column similar to your plot
+df$Group <- factor(c(rep("Uninduced", 3), rep("Induced", 3)))
+
+ggplot(df, aes(x = PC1, y = PC2, color = Group)) +
+  geom_point(size = 4) +
+  theme_light() +
+  ggtitle("Principal Component Analysis (PCA)") +
+  xlab(paste("PC1: ", round(summary(pca_result)$importance[2, 1]*100, 2), "% variance")) +
+  ylab(paste("PC2: ", round(summary(pca_result)$importance[2, 2]*100, 2), "% variance"))
+
+ggsave('results/pca_induced_x_uninduced_reads_counts.jpeg')
+
+```
+
 
 
 
