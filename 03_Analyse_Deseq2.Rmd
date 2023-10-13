@@ -42,7 +42,7 @@ count_matrix <- read.csv(paste(getwd(), "/results/counts_matrix_stacked.csv", se
 # # removing possible duplicated rows
 count_matrix <- count_matrix[!duplicated(count_matrix),]
 
-count_matrix
+#count_matrix
 ```
 
 
@@ -232,7 +232,7 @@ df1 <- df1 %>% relocate(ID, .before = Sequence)
 
 df1 <- rename(df1, "baseMean_1uM"=baseMean, "lfcSE_1uM"=lfcSE,"Log2FC_1uM"=log2FoldChange,
                   "stat_1uM"=stat, "pvalue_1uM"=pvalue, "p.adj_1uM"=padj, "DE_1uM"=DE)
-df1
+#df1
 ```
 
 
@@ -243,7 +243,7 @@ df10 <- left_join(df1, ten, by= "ID")
 df10 <- df10 %>% relocate(ID, .before = Sequence)
 df10 <- rename(df10, "baseMean_10uM"=baseMean, "lfcSE_10uM"=lfcSE,"Log2FC_10uM"=log2FoldChange,
                   "stat_10uM"=stat, "pvalue_10uM"=pvalue, "p.adj_10uM"=padj, "DE_10uM"=DE)
-df10
+head(df10)
 ```
 
 
@@ -255,7 +255,7 @@ df_full <- left_join(df10, hnd, by= "ID")
 df_full <- df_full %>% relocate(ID, .before = Sequence)
 df_full <- rename(df_full, "baseMean_100uM"=baseMean, "lfcSE_100uM"=lfcSE,"Log2FC_100uM"=log2FoldChange,
                   "stat_100uM"=stat, "pvalue_100uM"=pvalue, "p.adj_100uM"=padj, "DE_100uM"=DE)
-df_full
+head(df_full)
 ```
 
 
@@ -344,17 +344,14 @@ with increasing mean expression levels.
 Plot PCA by column variable
 ```{r, fig.height=5, fig.width=8}
 #jpeg(filename ="results/PCA_plot.jpeg", height=600, width=800, pointsize=12, res = 120)
-#plotPCA(rld, intgroup = "group", ntop = 500) +
-plotPCA(rld, intgroup = "group") +
+plotPCA(rld, intgroup = "group", ntop = 500) +
   theme_bw() +
   geom_point(size = 5) +
   ggtitle(label = "Principal Component Analysis (PCA)")
-
-
 ```
 
 
-```{r}
+```{r, fig.height=3, fig.width=8}
 pca_data = rld_mtx[,c(1, 2, 3, 10, 11, 12)]
 
 # Transpose the data
@@ -363,10 +360,10 @@ transposed_data <- t(pca_data)
 # Run PCA
 pca_result <- prcomp(transposed_data, center= TRUE, scale.= FALSE)
 
-# 3. Plot the results
+#results
 df <- as.data.frame(pca_result$x)
 
-# For demonstration, I'm creating a sample 'group' column similar to your plot
+# creating the factors
 df$Group <- factor(c(rep("Uninduced", 3), rep("Induced", 3)))
 
 ggplot(df, aes(x = PC1, y = PC2, color = Group)) +
@@ -374,9 +371,10 @@ ggplot(df, aes(x = PC1, y = PC2, color = Group)) +
   theme_light() +
   ggtitle("Principal Component Analysis (PCA)") +
   xlab(paste("PC1: ", round(summary(pca_result)$importance[2, 1]*100, 2), "% variance")) +
-  ylab(paste("PC2: ", round(summary(pca_result)$importance[2, 2]*100, 2), "% variance"))
+  ylab(paste("PC2: ", round(summary(pca_result)$importance[2, 2]*100, 2), "% variance")) +
+  scale_x_continuous(breaks= seq(-15, 15, by = 5))
 
-ggsave('results/pca_induced_x_uninduced_reads_counts.jpeg')
+ggsave('results/pca_induced_x_uninduced_reads_counts.jpeg', width=8 , height=3 )
 
 ```
 
