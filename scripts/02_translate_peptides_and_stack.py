@@ -7,7 +7,7 @@ import pandas as pd
 from Bio.Seq import Seq
 
 # Load  count matrix 
-counts = pd.read_table("/stor/work/Wilke/luiz/Protegrin-1_Slay_and_ML/data/counts/count_matrix.txt", sep="\s+", engine="python", header=None)
+counts = pd.read_table("data/counts/count_matrix.txt", sep="\s+", engine="python", header=None)
 
 # rename columns
 counts.rename(columns={0:"Sequence", 1:'S01_0uM_IPTG_1', 2:'S02_0uM_IPTG_2', 3:'S03_0uM_IPTG_3',

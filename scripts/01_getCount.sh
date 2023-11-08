@@ -17,6 +17,7 @@ OUTDIR=./data/counts
 
 
 for i in {1..12};
+#for i in 1 2 3 10 11 12;
 do
     echo "Processing sample $i"
     echo "Filtering fastq file for reads that match the firsts codon of the aplicom sequence"
@@ -54,6 +55,7 @@ awk '{if($1 >=9) print $0}' ${OUTDIR}/S3_uniq_counts.txt > ${OUTDIR}/S3_uniq_cou
 echo "joining counts"
 join -1 2 -2 2 <(sort -k 2 ${OUTDIR}/S1_uniq_counts_filtered.txt) <(sort -k 2 ${OUTDIR}/S2_uniq_counts_filtered.txt) -a1 > ${OUTDIR}/matrix_1-2.txt
 join -1 1 -2 2 <(sort -k 1 ${OUTDIR}/matrix_1-2.txt) <(sort -k 2 ${OUTDIR}/S3_uniq_counts_filtered.txt) -a1 > ${OUTDIR}/matrix_3.txt
+
 join -1 1 -2 2 <(sort -k 1 ${OUTDIR}/matrix_3.txt) <(sort -k 2 ${OUTDIR}/S4_uniq_counts.txt) -a1 > ${OUTDIR}/matrix_4.txt
 join -1 1 -2 2 <(sort -k 1 ${OUTDIR}/matrix_4.txt) <(sort -k 2 ${OUTDIR}/S5_uniq_counts.txt) -a1 > ${OUTDIR}/matrix_5.txt
 join -1 1 -2 2 <(sort -k 1 ${OUTDIR}/matrix_5.txt) <(sort -k 2 ${OUTDIR}/S6_uniq_counts.txt) -a1 > ${OUTDIR}/matrix_6.txt
