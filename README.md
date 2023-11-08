@@ -22,8 +22,8 @@ This work flow is divided in 2 parts. Deep mutational scanning and Machine Learn
 
 ### Get Counts
 
-One can run the script [getCounts.sh](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/01_getCount.sh) to obtain the result we did.  
-To run this script you will need [seqkit](https://bioinf.shenwei.me/seqkit/) installed in a unix enviromet.  
+One can run the script [getCounts.sh](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/scripts/01_getCount.sh) to obtain the result we did.  
+To run this script you will need [seqkit](https://bioinf.shenwei.me/seqkit/) and [flexbar](https://github.com/seqan/flexbar) installed in a unix enviromet.  
 
 **Note: Since tha raw FASTQ files are larger the limit size allowed in github, they are not available yet, this script will not work.**
 
@@ -41,11 +41,15 @@ The differential analysis was done in R with [Deseq2](https://bioconductor.org/p
 
 ### The notebooks 04 throught 06 shown the procedure used to train and test the model.
 
-#### [Hemolysis Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/04_hemolysis_model.ipynb)
-#### [Selectivity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/05_Selectivity_model.ipynb)
-#### [Activity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/06_Activity_model.ipynb)
+#### [Hemolysis Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/04_hemolysis_model_v01.ipynb)
+#### [Selectivity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/05_Selectivity_model_v01.ipynb)
+#### [Activity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/06_Activity_model_v01.ipynb)
 
-#### All these 3 models work in concensus to make the final predictions described in notebook [AMP Predictions](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/07_AMP_predictions.ipynb)
+#### All these 3 models work in concensus to make the final predictions described in notebook [AMP Predictions](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/07_AMP_predictions_v01.ipynb)
+
+
+# To create a conda enviroment with all the requeriment package run:
+    conda env create -f environment.yml -n DMS_ML_AMP
 
 
 All the code are commented so feel free to change the parameters to suit your data and needs.
