@@ -374,7 +374,7 @@ ggplot(df, aes(x = PC1, y = PC2, color = Group)) +
   ylab(paste("PC2: ", round(summary(pca_result)$importance[2, 2]*100, 2), "% variance")) +
   scale_x_continuous(breaks= seq(-15, 15, by = 5))
 
-ggsave('results/pca_induced_x_uninduced_reads_counts.jpeg', width=8 , height=3 )
+#ggsave('results/pca_induced_x_uninduced_reads_counts.jpeg', width=8 , height=3 )
 
 ```
 

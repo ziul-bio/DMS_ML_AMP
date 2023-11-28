@@ -22,7 +22,7 @@ This work flow is divided in 2 parts. Deep mutational scanning and Machine Learn
 
 ### Get Counts
 
-One can run the script [getCounts.sh](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/scripts/01_getCount.sh) to obtain the result we did.  
+One can run the script [getCounts.sh](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/scripts/01_getCount.sh) to obtain the read count matrix for each sample.  
 To run this script you will need [seqkit](https://bioinf.shenwei.me/seqkit/) and [flexbar](https://github.com/seqan/flexbar) installed in a unix enviromet.  
 
 **Note: Since tha raw FASTQ files are larger the limit size allowed in github, they are not available yet, this script will not work.**
@@ -36,6 +36,7 @@ We translated the peptide sequences with the [biopython translate function](http
 
 The differential analysis was done in R with [Deseq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html), described in the notebook [deseq2_analysis.rmd](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/03_Analyse_Deseq2.Rmd).  
 
+This section requires the reads count matrix obtain with the script getCounts.sh and are stored at "/results/counts_matrix_stacked.csv", the notebook and script will read the file and run the differential analysis. This run should genarate the log2 fold change and pvalues to all 7104 peptides.
 
 ## Part 2 - Machine Learning
 

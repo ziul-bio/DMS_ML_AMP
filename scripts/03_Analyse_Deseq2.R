@@ -82,9 +82,9 @@ resultsNames(ddsDE)
 ### Getting the results 
 print('#-------------- Creating results dataframe ---------#')
 ####Setting a alpha value of 0.05 for each comparison
-resOne <- results(ddsDE, alpha = 0.05, contrast=c("group", "One", "Zero"))
-resTen <- results(ddsDE, alpha = 0.05, contrast=c("group", "Ten", "Zero"))
-resHnd <- results(ddsDE, alpha = 0.05, contrast=c("group", "Hnd", "Zero"))
+resOne <- results(ddsDE, alpha = 0.05, contrast=c("group", "Zero", "One"))
+resTen <- results(ddsDE, alpha = 0.05, contrast=c("group", "Zero", "Ten"))
+resHnd <- results(ddsDE, alpha = 0.05, contrast=c("group", "Zero", "Hnd"))
 
 
 ### Results column description
