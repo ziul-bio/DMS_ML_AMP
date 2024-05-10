@@ -6,12 +6,12 @@
 # Deep mutational scanning and machine learning uncover antimicrobial peptide features driving membrane selectivity 
 
 
-This workflow is based on the paper "Tucker et al., Cell. 2018. Discovery of Next-Generation   
-Antimicrobials through Bacterial Self-Screening of Surface-Displayed Peptide Libraries". [Link](https://www.cell.com/cell/fulltext/S0092-8674(17)31451-4?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867417314514%3Fshowall%3Dtrue)
+Abstract:
 
-Some changes were applied in the pipeline to fit the new data.  
+Many antimicrobial peptides directly disrupt bacterial membranes but frequently also damage mammalian membranes. Deciphering the rules governing membrane selectivity is critical to understanding their function and enabling therapeutic use. Past attempts to decipher these rules often fail because they cannot interrogate adequate peptide sequence variation. To overcome this problem, we develop deep mutational surface localized antimicrobial display (dmSLAY), which reveals more comprehensive positional residue importance and flexibility across an antimicrobial peptide sequence. We apply dmSLAY to Protegrin-1, a potent yet toxic antimicrobial peptide, and identify thousands of sequence variants that positively or negatively influence its antibacterial activity. Further analysis reveals that avoiding aromatic residues and eliminating disulfide bound pairs while maintaining membrane bound secondary structure greatly improves Protegrin-1 bacterial specificity. Moreover, our biochemical datasets then enabled machine learning models to accurately predict membrane specific activities for over 5.7 million Protegrin-1 variants, leading to the identification of one with greatly reduced toxicity and retention of activity in a murine intraperitoneal infection model. Our results describe an innovative approach for elucidating antimicrobial peptide sequence-structure-function relationships which can inform synthetic peptide-based drug design.
 
-Here we describe all the steps required to reproduce the analysis on the paper "Deep mutational scanning and machine learning uncover antimicrobial peptide features driving membrane selectivity", Author Justin R. Randall.  
+
+Here we describe all the steps required to reproduce the analysis on the paper "Deep mutational scanning and machine learning uncover antimicrobial peptide features driving membrane selectivity".[link](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10543523/)  
 
 
 # Workflow
