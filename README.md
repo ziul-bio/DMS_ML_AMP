@@ -30,23 +30,22 @@ To run this script you will need [seqkit](https://bioinf.shenwei.me/seqkit/) and
 
 ### Compute Changes in the Peptides Sequence
 
-We translated the peptide sequences with the [biopython translate function](https://biopython.org/docs/1.75/api/Bio.Seq.html), and compute the differences on the sequence with the reference protegrin-1 protein using a custom python script, described on [translate_and_compute_changes_in_peptides.ipynb](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/02_translate_peptides_and_stack.ipynb).
+We translated the peptide sequences with the [biopython translate function](https://biopython.org/docs/1.75/api/Bio.Seq.html), and compute the differences on the sequence with the reference protegrin-1 protein using a custom python script, described on [translate_and_compute_changes_in_peptides.ipynb](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/notebooks/02_translate_peptides_and_stack.ipynb).
 
 ### Differential Expression Analysis
 
-The differential analysis was done in R with [Deseq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html), described in the notebook [deseq2_analysis.rmd](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/03_Analyse_Deseq2.Rmd).  
+The differential analysis was done in R with [Deseq2](https://bioconductor.org/packages/release/bioc/html/DESeq2.html), described in the notebook [deseq2_analysis.rmd](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/notebooks/03_Analyse_Deseq2.Rmd).  
 
 This section requires the reads count matrix obtain with the script getCounts.sh and are stored at "/results/counts_matrix_stacked.csv", the notebook and script will read the file and run the differential analysis. This run should genarate the log2 fold change and pvalues to all 7104 peptides.
 
 ## Part 2 - Machine Learning
 
 ### The notebooks 04 throught 06 shown the procedure used to train and test the model.
+#### [Hemolysis Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/notebooks/04_hemolysis_model_v01.ipynb)
+#### [Selectivity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/notebooks/05_Selectivity_model_v01.ipynb)
+#### [Activity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/notebooks/06_Activity_model_v01.ipynb)
 
-#### [Hemolysis Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/04_hemolysis_model_v01.ipynb)
-#### [Selectivity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/05_Selectivity_model_v01.ipynb)
-#### [Activity Model](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/06_Activity_model_v01.ipynb)
-
-#### All these 3 models work in concensus to make the final predictions described in notebook [AMP Predictions](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/07_AMP_predictions_v01.ipynb)
+#### All these 3 models work in concensus to make the final predictions described in notebook [AMP Predictions](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/notebooks/07_AMP_predictions_v01.ipynb)
 
 
 # To create a conda enviroment with all the requeriment package run:
