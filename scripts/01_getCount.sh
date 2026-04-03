@@ -13,11 +13,12 @@ echo "*************************************** Starting Process *****************
 echo " "
 FASTQ=./data/rawFastq
 INPUT=./data
-OUTDIR=./data/counts
+OUTDIR=./data/counts_test
 
+mkdir -p ${OUTDIR}
 
-for i in {1..12};
-#for i in 1 2 3 10 11 12;
+#for i in {1..12};
+for i in 1 2 3 10 11 12;
 do
     echo "Processing sample $i"
     echo "Filtering fastq file for reads that match the firsts codon of the aplicom sequence"
