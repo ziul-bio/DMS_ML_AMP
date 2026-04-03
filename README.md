@@ -22,11 +22,16 @@ This work flow is divided in 2 parts. Deep mutational scanning and Machine Learn
 
 ### Get Counts
 
-One can run the script [getCounts.sh](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/scripts/01_getCount.sh) to obtain the read count matrix for each sample.  
 To run this script you will need [seqkit](https://bioinf.shenwei.me/seqkit/) and [flexbar](https://github.com/seqan/flexbar) installed in a unix enviromet.  
 
-**Note: Since tha raw FASTQ files are larger the limit size allowed in github, they are not available yet, this script will not work.**
+**Note: Since tha raw FASTQ files are larger the limit size allowed in github, they need to be downloaded first.**
 
+```bash
+bash scripts/download_SRA.sh
+```
+
+### Compuite the read count matrix for each sample
+One can run the script [getCounts.sh](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/scripts/01_getCount.sh) .  
 
 ### Compute Changes in the Peptides Sequence
 
@@ -48,8 +53,19 @@ This section requires the reads count matrix obtain with the script getCounts.sh
 #### All these 3 models work in concensus to make the final predictions described in notebook [AMP Predictions](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/notebooks/07_AMP_predictions_v01.ipynb)
 
 
-# To create a conda enviroment with all the requeriment package run:
-    conda env create -f environment.yml -n DMS_ML_AMP
+# Reproducibility tips
+
+## To reproduce the bioinformatics section 
+Some packages, such as seqkit and flexbar are not available to instalation through python environment. In order to reproduce the first part of the analysis (Count read from DMS), it will require that we create a conda enviroment, if those packages are not already available at your local computer or cluster.
+Packages required: biopython, flexbar, seqkit, pandas
+
+    conda create --name DMS_ML_AMP --file environment.yml
+
+## To reproduce the machine learning section.
+Pytorch does not have a instalation through conda environments, so in this case, create a python environment to extract the embedding from the ESM-2 models and run the machine learning models.
+    python3.8 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
 
 
 All the code are commented so feel free to change the parameters to suit your data and needs.
