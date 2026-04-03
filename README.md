@@ -63,9 +63,10 @@ Packages required: biopython, flexbar, seqkit, pandas
 
 ## To reproduce the machine learning section.
 Pytorch does not have a instalation through conda environments, so in this case, create a python environment to extract the embedding from the ESM-2 models and run the machine learning models.
-    python3.8 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-
+```bash
+python3.8 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
 All the code are commented so feel free to change the parameters to suit your data and needs.
