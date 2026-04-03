@@ -24,13 +24,13 @@ This work flow is divided in 2 parts. Deep mutational scanning and Machine Learn
 
 To run this script you will need [seqkit](https://bioinf.shenwei.me/seqkit/) and [flexbar](https://github.com/seqan/flexbar) installed in a unix enviromet.  
 
-**Note: Since tha raw FASTQ files are larger the limit size allowed in github, they need to be downloaded first.**
+**Note: Since tha raw FASTQ files are larger than the limit size allowed in github, they need to be downloaded first.**
 
 ```bash
 bash scripts/download_SRA.sh
 ```
 
-### Compuite the read count matrix for each sample
+### Compute the read count matrix for each sample
 One can run the script [getCounts.sh](https://github.com/ziul-bio/DMS_ML_AMP/blob/main/scripts/01_getCount.sh) .  
 
 ### Compute Changes in the Peptides Sequence
@@ -55,7 +55,7 @@ This section requires the reads count matrix obtain with the script getCounts.sh
 
 # Reproducibility tips
 
-## To reproduce the bioinformatics section 
+## To reproduce the Deep Mutational Scanning section 
 Some packages, such as seqkit and flexbar are not available to instalation through python environment. In order to reproduce the first part of the analysis (Count read from DMS), it will require that we create a conda enviroment, if those packages are not already available at your local computer or cluster.
 Packages required: biopython, flexbar, seqkit, pandas
 
